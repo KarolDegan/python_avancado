@@ -1,13 +1,9 @@
-def gerador():
-    a = 1
-    while True:
-        yield a
-        a *= 2
+import sys
+print(dir())
+a = 1
+b = 'abracadabra'
+c = 17.1
+print(dir())
 
-gen = gerador()
-next(gen)
-soma = 0
-for n in range(4):
-    soma += next(gen)
-
-print(soma)
+for i in dir(sys):
+    print(i, end = ' ')

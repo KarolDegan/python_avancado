@@ -1,19 +1,32 @@
 def gera_primos2():
-    yield 2
-    v = 3
+    v = 2
     while True:
-        i = 3
-        raiz = v**0.5
-        while i <= raiz and v % i !=0:
-            i+=2
-        if i> raiz:
-            valor = (yield v)
-            if valor is not None:
-                v = valor
-                if valor < 2:
-                    raise ValueError(f'Esperado valor maior ou igual a 2, passado {valor}')
+        novo = (yield v)  # Retorna o primo atual e espera por um novo valor
+        if novo is not None:
+            if novo >= 2:
+                v = novo  # Redefine o ponto inicial se válido
+            else:
+                print("O valor inicial não pode ser menor que 2. Continuando...")
+                v = 2
+        
+        while True:
+            if v == 2:
+                yield v
+                v = 3  # Próximo número a verificar
+            elif v % 2 != 0:  # Números ímpares
+                i = 3
+                raiz = v ** 0.5
+                while i <= raiz:
+                    if v % i == 0:
+                        break
+                    i += 2
+                else:
+                    yield v  # Número primo encontrado
+                v += 2  # Testa o próximo ímpar
+            else:
+                v += 1  # Garante que v seja ímpar, se não for 2
 
-        v +=2
+        
 
 
 qt = int(input("quantidade de primos? "))

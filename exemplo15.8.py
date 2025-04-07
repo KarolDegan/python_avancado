@@ -23,7 +23,7 @@ for i in range(5):
     print(next(gen)) # como o next não envia nada o valor do num permanece 2 que é retornado(yield), dado = none
 
 print('\nGera 5 ímpares')
-ret = gen.send(1) # este método retorna o 1º valor da sequência que é 1 após o num ser zerado e novamente acrescido de +=1
+ret = gen.send(2) # este método retorna o 1º valor da sequência que é 1 após o num ser zerado e novamente acrescido de +=1
 print(ret) # imprime o 1 aqui
 for i in range(4): # então precisamos gerar o próximos 4
     print("impressão: " + str(next(gen)))
